@@ -1,0 +1,32 @@
+<% action_url = post.persisted? ? post_url(post) : sub_posts_url %>
+<% post_method = post.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= post_method %>">
+  <%= auth_token %>
+
+  <label for="title">Littr Brand</label>
+  <input type="text" name="post[title]" value="<%= post.title %>">
+  <br>
+
+  <label for="url">uRl</label>
+  <input type="text" name="post[url]" value="<%= post.url %>">
+  <br>
+
+  <label for="txtairyuh">Claw Innz</label>
+  <textarea id="txtairyuh" name="post[description]">
+    <%= post.description %>
+  </textarea>
+
+  <% Sub.all.each do |subz| %>
+    <label>
+      <input name="post[sub_ids][]" value="<%= subz.id %>"
+      <%= subz.title %>
+    </label>
+  <% end %>
+
+  </select>
+  <br>
+
+  <button>Death 2 Hyoomunz</button>
+</form>

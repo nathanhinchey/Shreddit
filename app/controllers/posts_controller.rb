@@ -61,4 +61,10 @@ class PostsController < ApplicationController
     def set_current_post
       @post = Post.find(params[:id])
     end
+
+    def populate_postsubs
+      params[:post][:sub_ids].each do |sub_id|
+        PostSub.create!(post_id: @post.id, sub_id: sub_id)
+      end
+    end
 end
