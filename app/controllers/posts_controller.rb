@@ -18,7 +18,12 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    @post.sub_id = params[:sub_id]
+    repopulate_postsubs
+
+    if @post.sub_ids.empty?
+      redirect_to new_sub_post(sub_id: params[:sub_id])
+    end
+
     if @post.save
       redirect_to post_url(@post)
     else
@@ -33,6 +38,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.update(post_params)
+    repopulate_postsubs
+    if @post.sub_ids.empty?
+      @post.destroy
+      redirect_to posts_url
+    end
+
     if @post.save
       redirect_to post_url(@post)
     else
@@ -48,7 +59,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :url, :content, :sub_id, :author_id)
+      params.require(:post).permit(:title, :url, :content, :sub_ids, :author_id)
     end
 
     def verify_author
@@ -62,9 +73,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def populate_postsubs
-      params[:post][:sub_ids].each do |sub_id|
-        PostSub.create!(post_id: @post.id, sub_id: sub_id)
-      end
+    def repopulate_postsubs
+      @post.sub_ids = params[:post][:sub_ids]
     end
 end

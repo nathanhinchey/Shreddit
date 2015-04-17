@@ -4,4 +4,4 @@
   <%= render 'shared/post', post: post %><br>
 <% end %>
 
-<a href="<%= new_sub_post_url %>">makez new scratchin post</a>
+<a href="<%= new_sub_post_url(sub_id: @sub.id) %>">makez new scratchin post</a>

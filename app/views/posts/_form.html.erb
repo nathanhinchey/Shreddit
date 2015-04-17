@@ -7,22 +7,23 @@
 
   <label for="title">Littr Brand</label>
   <input type="text" name="post[title]" value="<%= post.title %>">
-  <br>
+  <br><br>
 
   <label for="url">uRl</label>
   <input type="text" name="post[url]" value="<%= post.url %>">
-  <br>
+  <br><br>
 
   <label for="txtairyuh">Claw Innz</label>
-  <textarea id="txtairyuh" name="post[description]">
-    <%= post.description %>
-  </textarea>
+  <textarea id="txtairyuh" name="post[content]">
+    <%= post.content %>
+  </textarea><br><br>
 
+  Champaignz<br>
   <% Sub.all.each do |subz| %>
     <label>
-      <input name="post[sub_ids][]" value="<%= subz.id %>"
+      <input name="post[sub_ids][]" type="checkbox" value="<%= subz.id %>">
       <%= subz.title %>
-    </label>
+    </label><br>
   <% end %>
 
   </select>

@@ -1,0 +1,9 @@
+<%= render "shared/post", post: @post %>
+
+<%= post.description %>
+
+<!-- link here to write new comment -->
+
+<% @post.comments.each do |comment| %>
+  <%= render 'shared/comments', comment: comment %><br>
+<% end %>
