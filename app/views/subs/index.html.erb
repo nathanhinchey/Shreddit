@@ -1,4 +1,9 @@
-<%= @subs.each do |sub| %>
-  <a href="<%= sub_url(sub) %>"><%= sub.title %></a><br>
-  <%= sub.posts.count %> scratching posts<br>
+<%= @subs.each do |subz| %>
+  <a href="<%= sub_url(subz) %>"><%= subz.title %></a><br>
+  <%= subz.posts.count %> scratching posts<br>
 <% end %>
+
+<form action="<%= new_sub_url %>" method="post">
+  <%= auth_token %>
+  <button>mew Hunt 4 Catnipz!</button>
+</form>

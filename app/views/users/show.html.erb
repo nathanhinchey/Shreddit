@@ -1,5 +1,5 @@
 <% @user.posts.each do |post| %>
-  <%= render 'shared/post' %><br>
+  <%= render 'shared/post', post: post %><br>
 <% end %>
 
 <% if current_user == @user %>

@@ -1,0 +1,31 @@
+<% action_url = user.persisted? ? sub_url(subz) : subs_url %>
+<% user_method = user.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= user_method %>">
+  <%= auth_token %>
+
+  <label for="title"> Champaign </label>
+  <input type="text" name="sub[title]" value="<%= subz.title %>">
+  <br>
+
+  <label for="description"> Bttul straturgy </label>
+  <input type="text" name="sub[description]" value="<%= subz.description %>">
+  <br>
+
+  <label for="moderator">Furliss Leedur</label>
+  <select name="sub[moderator_id]" id="moderator">
+    <option disabled selected></option>
+
+    <% User.all.each do |user| %>
+      <option
+        <%= 'selected' if user == subz.moderator %>
+        value="<%= user.id %>">
+          <%= user.name %>
+      </option>
+    <% end %>
+    
+  </select>
+
+  <button>Death 2 Hyoomunz</button>
+</form>
