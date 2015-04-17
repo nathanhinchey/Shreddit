@@ -5,13 +5,11 @@ class CreatePosts < ActiveRecord::Migration
       t.string :url
       t.text :content
       t.integer :author_id, null: false
-      t.integer :sub_id, null: false
 
       t.timestamps null: false
     end
 
     add_index :posts, :author_id
-    add_index :posts, :sub_id
     add_index :subs, :moderator_id
     add_index :subs, :title, unique: true
   end
