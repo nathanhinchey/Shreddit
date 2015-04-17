@@ -1,0 +1,4 @@
+<%= @subs.each do |sub| %>
+  <a href="<%= sub_url(sub) %>"><%= sub.title %></a><br>
+  <%= sub.posts.count %> scratching posts<br>
+<% end %>

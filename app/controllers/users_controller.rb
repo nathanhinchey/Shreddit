@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :verify_owner, only: [:update, :destroy, :edit]
+
   def index
     @users = User.all
     render :index
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in_user!(@user)
       redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -52,4 +55,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:collar, :password)
     end
 
+    def verify_owner
+      user = User.find(params[:id])
+      unless current_user == user
+        redirect_to :forbidden
+      end
+    end
 end

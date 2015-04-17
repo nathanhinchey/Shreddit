@@ -19,9 +19,13 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :posts,
+    foreign_key: :author_id,
+    inverse_of: :author
+
   def self.generate_session_token
     begin
-      token = SecureRandom::urlsafe_base64(16) #_question_ why include this 16?
+      token = SecureRandom::urlsafe_base64(16)
     end until !self.exists?(session_token: token)
     token
   end

@@ -1,3 +1,12 @@
 <% @user.posts.each do |post| %>
   <%= render 'shared/post' %><br>
 <% end %>
+
+<% if current_user == @user %>
+  <a href="<%= edit_user_url %>">Sharpen Ur Talonz</a><br>
+  <form action="<%= user_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <button>SPLODEY SPLODE(NOOOOOOoooooo)</button>
+  </form>
+<% end %>
