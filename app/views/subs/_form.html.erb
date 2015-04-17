@@ -1,8 +1,8 @@
-<% action_url = user.persisted? ? sub_url(subz) : subs_url %>
-<% user_method = user.persisted? ? "PATCH" : "POST" %>
+<% action_url = subz.persisted? ? sub_url(subz) : subs_url %>
+<% subz_method = subz.persisted? ? "PATCH" : "POST" %>
 
 <form action="<%= action_url %>" method="post">
-  <input type="hidden" name="_method" value="<%= user_method %>">
+  <input type="hidden" name="_method" value="<%= subz_method %>">
   <%= auth_token %>
 
   <label for="title"> Champaign </label>
@@ -21,11 +21,12 @@
       <option
         <%= 'selected' if user == subz.moderator %>
         value="<%= user.id %>">
-          <%= user.name %>
+          <%= user.collar %>
       </option>
     <% end %>
-    
-  </select>
 
+  </select>
+  <br>
+  
   <button>Death 2 Hyoomunz</button>
 </form>

@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     inverse_of: :author
 
+  has_many :subs, foreign_key: :moderator_id
+
   def self.generate_session_token
     begin
       token = SecureRandom::urlsafe_base64(16)

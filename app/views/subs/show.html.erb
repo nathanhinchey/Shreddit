@@ -1,5 +1,7 @@
-<h2><%= @sub.name %></h2>
+<h2><%= @sub.title %></h2>
 
 <% @sub.posts.each do |post| %>
   <%= render 'shared/post', post: post %><br>
 <% end %>
+
+<a href="<%= new_sub_post_url %>">makez new scratchin post</a>
