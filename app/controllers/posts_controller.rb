@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :verify_editable, only: [:edit, :update, :destroy]
+  before_action :verify_author, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -51,9 +51,9 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :url, :content, :sub_id, :author_id)
     end
 
-    def verify_editable
+    def verify_author
       set_current_post
-      unless current_user == @post.author || current_user == @post.moderator
+      unless current_user == @post.author
         redirect_to post_url(@post)
       end
     end

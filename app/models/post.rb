@@ -17,7 +17,7 @@ class Post < ActiveRecord::Base
   validates :author_id, presence: true
   validates :sub_id, presence: true
 
-  belongs_to :sub
-  has_one :moderator, through: sub
+  has_many :post_subs, dependent: :destroy
+  has_many :subs, through: :post_subs
 
 end

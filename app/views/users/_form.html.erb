@@ -1,0 +1,11 @@
+<% action_url = user.persisted? ? user_url(user) : users_url %>
+<% user_method = user.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="_method" value="<%= user_method %>">
+  <%= auth_token %>
+
+  <%= render "shared/collar_password" %>
+
+  <button>Death 2 Hyoomunz</button>
+</form>
