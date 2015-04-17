@@ -1,0 +1,16 @@
+<% if logged_in? %>
+  Welcome, <%= current_user.collar %>!!!!!!1111eleven
+  <br>
+  <form action="<%= logout_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Scamper!</button>
+  </form>
+  <br>
+<% else %>
+  <a href="<%= new_session_url %>">Pounce!</a> |
+  <a href="<%= new_user_url %>">JOINZ TEH CAT PARTAY!</a>
+  <br><br>
+  <button>PLAY WIT TEH YARNZ</button>
+  <br><br>
+<% end %>

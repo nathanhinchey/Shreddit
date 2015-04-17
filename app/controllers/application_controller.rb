@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :log_in_user!, :logged_in?
 
+  def auth_token
+    <<-HTML.html_safe
+      <input type="hidden"
+             name="authenticity_token"
+             value="#{form_authenticity_token}">
+    HTML
+  end
+
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by(session_token: session[:session_token])

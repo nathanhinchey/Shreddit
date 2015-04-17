@@ -1,0 +1,4 @@
+<h1>ALL THE CATS</h1>
+<% @users.each do |cat| %>
+  <a href="<%= cat_url(cat) %>"><%= cat.collar %></a><br>
+<% end %>
