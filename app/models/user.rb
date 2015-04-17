@@ -22,14 +22,14 @@ class User < ActiveRecord::Base
   def self.generate_session_token
     begin
       token = SecureRandom::urlsafe_base64(16) #_question_ why include this 16?
-    end until !self.class.exists?(session_token: token)
+    end until !self.exists?(session_token: token)
     token
   end
 
   def self.find_by_credentials(collar, password)
-    user = User.find_by(collar: params[:user][:collar])
+    user = User.find_by(collar: collar)
     return nil if user.nil?
-    user.is_password? ? user : nil
+    user.is_password?(password) ? user : nil
   end
 
   def is_password?(password)
