@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   shallow do
     resources :subs do
-      resources :posts, except: [:index]
+      shallow do
+        resources :posts, except: [:index] do
+          resources :comments, except: [:index, :show]
+        end
+      end
     end
   end
 end

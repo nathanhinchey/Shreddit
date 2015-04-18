@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     inverse_of: :author
 
   has_many :subs, foreign_key: :moderator_id
+  has_many :comments, foreign_key: :author_id
 
   def self.generate_session_token
     begin

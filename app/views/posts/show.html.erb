@@ -1,9 +1,9 @@
 <%= render "shared/post", post: @post %>
 
-<%= post.description %>
+<%= @post.content %>
 
-<!-- link here to write new comment -->
+<a href="<%= new_post_comment_url(post_id: @post.id) %>">rub butz on interwbez!</a>
 
 <% @post.comments.each do |comment| %>
-  <%= render 'shared/comments', comment: comment %><br>
+  <%= render 'comments/comment', comment: comment %><br>
 <% end %>

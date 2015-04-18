@@ -18,5 +18,6 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: 'User', inverse_of: :posts
   has_many :post_subs, dependent: :destroy
   has_many :subs, through: :post_subs
+  has_many :comments, dependent: :destroy
 
 end

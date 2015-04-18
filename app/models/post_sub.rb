@@ -3,8 +3,10 @@
 # Table name: post_subs
 #
 #  id         :integer          not null, primary key
-#  sub_id     :integer          not null
 #  post_id    :integer          not null
+#  sub_id     :integer          not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class PostSub < ActiveRecord::Base
