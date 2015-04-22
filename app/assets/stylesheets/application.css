@@ -14,8 +14,9 @@
  *= require_self
  */
 
- *{
+ body{
    background: #0FF;
+   font-family: "Comic Sans MS";
  }
 
  a{
@@ -23,7 +24,8 @@
  }
 
  button{
-   font: 11px Arial;
+   font: 11px "Papyrus";
+   font-weight: bold;
    text-decoration: none;
    background-color: #FF0;
    color: #000;
@@ -33,6 +35,11 @@
    border-bottom: 2px solid #333333;
    border-left: 2px solid #CCCCCC;
    margin: 3px;
+ }
+
+ input{
+   background-color: #FFF;
+   color: #000;
  }
 
  .button {
@@ -53,16 +60,23 @@
   color: #FFF;
 }
 
+button:active{
+  background-color: #F00;
+}
+
 .comment{
+  font-family: "Futura";
   display: block;
   border-radius: 0px;
-  border: 1px solid;
+  border: 5px dashed #F00;
   margin-top: 1px;
-  margin-bottom: 1px;
+  margin-bottom: 5px;
+  background-color: #6FF;
 
 }
 
 .author{
+  margin-left: 5px;
   margin-top: 1px;
   margin-bottom: 1px;
 }

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :new]
   delete 'session' => 'sessions#destroy', as: 'logout'
 
+  get '/', to: 'sessions#new', as: 'root'
   shallow do
     resources :subs do
       shallow do
