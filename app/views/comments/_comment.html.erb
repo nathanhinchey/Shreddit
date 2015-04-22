@@ -1,2 +1,7 @@
-<h5><%= comment.author.collar %> sez:</h5><br>
-<%= comment.content %><br><br>
+<div class="comment"><h5 class="author">
+    <a href="<%= user_url(comment.author) %>">
+      <%= comment.author.collar %>
+    </a>
+    sez:
+  </h5>
+<p><%= comment.content %></p></div>

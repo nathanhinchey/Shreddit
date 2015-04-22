@@ -3,10 +3,10 @@
 <% end %>
 
 <% if current_user == @user %>
-  <a href="<%= edit_user_url %>">Sharpen Ur Talonz</a><br>
+  <a href="<%= edit_user_url %>" class="button">edit profile</a><br>
   <form action="<%= user_url %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="_method" value="DELETE">
-    <button>SPLODEY SPLODE(NOOOOOOoooooo)</button>
+    <button class="danger">SPLODEY SPLODE(NOOOOOOoooooo)</button>
   </form>
 <% end %>

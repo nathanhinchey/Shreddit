@@ -1,5 +1,7 @@
 <h2><%= @sub.title %></h2>
-
+<p>
+  <%= @sub.description %>
+</p>
 <% @sub.posts.each do |post| %>
   <%= render 'shared/post', post: post %><br>
 <% end %>

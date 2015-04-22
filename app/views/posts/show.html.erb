@@ -1,9 +1,17 @@
+Posted in: |
+<% @subs.each do |sub| %>
+  <a href="<%= sub_url(sub) %>"><%= sub.title %></a> |
+<% end %>
 <%= render "shared/post", post: @post %>
 
 <%= @post.content %>
 
-<a href="<%= new_post_comment_url(post_id: @post.id) %>">rub butz on interwbez!</a>
+<p>
+  <a href="<%= new_post_comment_url(post_id: @post.id) %>">
+    rub butz on interwbez!
+  </a>
+</p>
 
 <% @post.comments.each do |comment| %>
-  <%= render 'comments/comment', comment: comment %><br>
+  <%= render 'comments/comment', comment: comment %>
 <% end %>

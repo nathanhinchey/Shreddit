@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     set_current_post
+    @subs = @post.subs
     render :show
   end
 
@@ -70,7 +71,7 @@ class PostsController < ApplicationController
     end
 
     def set_current_post
-      @post = Post.find(params[:id])
+      @post ||= Post.find(params[:id])
     end
 
     def repopulate_postsubs
